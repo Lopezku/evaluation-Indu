@@ -1,12 +1,20 @@
+"use strict";
 /* eslint linebreak-style: ["error", "windows"] */
-import { fetchPokemon } from './api/fetchPokemon.mjs';
-import { fetchPokemonAbilities } from './api/fetchPokemonHabilites.mjs';
-window.addEventListener('DOMContentLoaded', () => {
-  const pokeP = document.getElementById('pokeInfo');
-  const pokeDiv = document.getElementById('pokemon-info');
-  const pokeAbilityBtn = document.getElementById('ability');
+import { fetchPokemon } from "./api/fetchPokemon.mjs";
+import { fetchPokemonAbilities } from "./api/fetchPokemonHabilites.mjs";
+window.addEventListener("DOMContentLoaded", () => {
+  const pokeP = document.getElementById("pokeInfo");
+  const pokeDiv = document.getElementById("pokemon-info");
+  const pokeAbilityBtn = document.getElementById("ability");
 
   const pokeInfo = {};
+  // eslint-disable-next-line valid-jsdoc
+  /**
+   * @function
+   * @name callFetchPokemon
+   * function qui récupère le fichier json Pokemon
+   * Le nom de l'espèce est Capitalize et assigné à l'élément HTML: pokeInfo
+   */
   const callFetchPokemon = async () => {
     const pokemon = await fetchPokemon();
     if (pokemon) {
@@ -16,17 +24,24 @@ window.addEventListener('DOMContentLoaded', () => {
         .slice(1, pokemon.species.name.length)
         .toLowerCase()}`;
     }
-    if (pokeP.innerText !== '') {
-      pokeP.innerText = '';
+    if (pokeP.innerText !== "") {
+      pokeP.innerText = "";
     }
     pokeP.innerText = `Your Pokémon is ${pokeInfo.name}.`;
-    pokeAbilityBtn.removeAttribute('disabled');
+    pokeAbilityBtn.removeAttribute("disabled");
   };
 
+  // eslint-disable-next-line valid-jsdoc
+  /**
+   * @function
+   * @name callFetchPokemonAbilities
+   * function qui récupère le fichier json avec les habilités Pokemon
+   * L'habilité Capitalize assigné à l'élément HTML: pokeAbility
+   */
   const callFetchPokemonAbilities = async () => {
     const ability = await fetchPokemonAbilities();
-    const pokeAbility = document.getElementById('pokeAbility');
-    let abilityToDisplay = '';
+    const pokeAbility = document.getElementById("pokeAbility");
+    let abilityToDisplay = "";
     if (ability) {
       abilityToDisplay = `${String(ability.name)
         .slice(0, 1)
@@ -34,8 +49,8 @@ window.addEventListener('DOMContentLoaded', () => {
         .slice(1, ability.name.length)
         .toLowerCase()}`;
     }
-    if (pokeAbility.innerText !== '') {
-      pokeAbility.innerText = '';
+    if (pokeAbility.innerText !== "") {
+      pokeAbility.innerText = "";
     }
 
     pokeAbility.innerText = `It now knows the move ${abilityToDisplay}!`;
@@ -43,20 +58,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
   /**
    * Création du bouton pour ajouter le nom d'un Pokemon au DOM
-   *
    */
   const invoquePokemon = () => {
-    const pokeBtn = document.getElementById('pokemon');
-    pokeBtn.addEventListener('click', callFetchPokemon);
+    const pokeBtn = document.getElementById("pokemon");
+    pokeBtn.addEventListener("click", callFetchPokemon);
     pokeDiv.appendChild(pokeP);
   };
 
   /**
    * Création d'un bouton pour ajouter le nom d'une habilité au DOM
-   *
    */
   const pokemonAbility = () => {
-    pokeAbilityBtn.addEventListener('click', callFetchPokemonAbilities);
+    pokeAbilityBtn.addEventListener("click", callFetchPokemonAbilities);
     pokeDiv.appendChild(pokeAbility);
   };
   /**
