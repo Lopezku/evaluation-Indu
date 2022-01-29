@@ -20,7 +20,6 @@ const multiplyAllByTwo = (arrayOfNumbers) => {
     arrayOfNumbers.constructor.prototype === new Array().constructor.prototype
   ) {
     response = arrayOfNumbers.map((val) => val * 2);
-    console.log("arrayTimesTwo: ", arrayTimesTwo);
   } else {
     response = "The argument is not an Array of numbers";
   }
