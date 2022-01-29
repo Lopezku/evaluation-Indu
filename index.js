@@ -25,7 +25,8 @@ app.get("/", (req, res) => {
 
 app.post("/comment", (req, res) => {
   const comment = req.body.message;
-  res.send(comment);
+  const commentDef = comment.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  res.send(commentDef);
 });
 
 app.listen(port, host, () => {
