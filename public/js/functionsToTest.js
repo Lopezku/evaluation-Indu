@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const returnAnObject = (...args) => {
+export const returnAnObject = (...args) => {
   let response = {};
   if (args.length) {
     let index = 0;
@@ -13,11 +13,11 @@ const returnAnObject = (...args) => {
   return response;
 };
 /* eslint-disable no-unused-vars */
-const multiplyAllByTwo = (arrayOfNumbers) => {
+export const multiplyAllByTwo = (arrayOfNumbers) => {
   let response;
   if (
     /* eslint-disable-next-line */
-    arrayOfNumbers.constructor.prototype === new Array().constructor.prototype
+    Array.isArray(arrayOfNumbers)
   ) {
     response = arrayOfNumbers.map((val) => val * 2);
   } else {
