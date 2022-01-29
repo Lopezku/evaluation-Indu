@@ -1,0 +1,22 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "google"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "object-curly-spacing": ["error", "always"],
+        "linebreak-style": 0,
+        "global-require": 0,
+        "indent": "off",
+        "quotes": "off",
+        "eslint linebreak-style": [0, "error", "windows"],
+        "comma-dangle": "off"
+    }
+}
